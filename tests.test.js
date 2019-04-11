@@ -2,52 +2,52 @@ const req = require("supertest");
 const s = require("./api/server");
 
 const allGameData = {
-  title: "Pacman", // required
-  genre: "Arcade", // required
-  releaseYear: 1980 // not required
+  title: "Mass Effect", // required
+  genre: "Shooter", // required
+  releaseYear: 2007 // not required
 };
 
 const partialGameData = {
-  title: "Pacman", // required
+  title: "Mass Effect", // required
   // genre: null, // required but left out for the test
-  releaseYear: 1980 // not required
+  releaseYear: 2007 // not required
 };
 
 describe("Games", () => {
-  describe("POST /games endpoint", () => {
+  describe("POST to /games", () => {
     it("should return status 201", async () => {
-      let response = await req(s)
+      let res = await req(s)
         .post("/games")
         .send(allGameData);
-      expect(response.status).toBe(201);
+      expect(res.status).toBe(201);
     });
 
-    it("should return a success message", async () => {
-      let response = await req(s)
+    it("returns successfully", async () => {
+      let res = await req(s)
         .post("/games")
         .send(allGameData);
-      expect(response.body).toEqual({ message: "Pacman successfully added" });
+      expect(res.body).toEqual({ message: "Mass Effect successfully added" });
     });
-    it("should return status 422 if information is incomplete", async () => {
-      let response = await req(s)
+    it("returns 422 if information is incomplete", async () => {
+      let res = await req(s)
         .post("/games")
         .send(partialGameData);
-      expect(response.status).toBe(422);
+      expect(res.status).toBe(422);
     });
   });
 
   describe("GET /games endpoint", () => {
-    it("should return status code 200 when successful", async () => {
-      let response = await req(s).get("/games");
-      expect(response.status).toBe(200);
+    it("returns 200 when successful", async () => {
+      let res = await req(s).get("/games");
+      expect(res.status).toBe(200);
     });
-    it("should return an empty array if no games are in the db", async () => {
-      let response = await req(s).get("/games");
-      expect(response.body).toEqual([]);
+    it("return empty array if no games are found", async () => {
+      let res = await req(s).get("/games");
+      expect(res.body).toEqual([]);
     });
-    it("should return an array of games", async () => {
-      let response = await req(s).get("/games");
-      expect(Array.isArray(response.body)).toBe(true);
+    it("returns array of games", async () => {
+      let res = await req(s).get("/games");
+      expect(Array.isArray(res.body)).toBe(true);
     });
   });
 });
