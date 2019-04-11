@@ -25,8 +25,15 @@ In this challenge use `Test Driven Development` to build a RESTful API using Nod
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 1. In Jest, what are the differences between `describe()` and `it()` globals, and what are good uses for them?
+Describe is used to batch together tests that all relate ('describe') to a specific method or part of your code. `it()` is used to make a specific test case, which normally get put _inside_ of `describe()` statements. So, describe is used to group together groups of it statements. Meanwhile, it is good for testing specific behaviours.
+
 1. What is the point of `Test Driven Development`? What do you think about this approach?
+When pursuing TDD, we write tests first, trying to take any and all scenarios into account, and then writing code to make sure that it passes those tests. So, when building features, you start off with the tests and then go build your code. It could be useful when running truly large-scale apps with hundreds of dependencies and components. However, for most smaller/medium-sized apps, it is not all that useful in my opinion. Personally, I thoroughly dislike using TDD. For some reason, it doesn't feel naturally for me to first figure out what could possibly go wrong and exhaustively work through every possible test case where something could go wrong. In my opinion, if you're capable of coming up with those solutions beforehand, you should just implement them in your code straight away, rather than learning new frameworks and libraries to write (what is in my mind) redundant code.
+
 1. Mention three types of automated tests.
+- Test Driven Development
+- Acceptance Test Driven development
+- Behaviour Driven Development
 
 ## Project Set Up
 
@@ -63,8 +70,8 @@ Below is a product specification covering the requirements for your endpoints.
 
 ### GET /games
 
-- [ ] The `GET /games` endpoint should return the list of games and HTTP status code 200.
-- [ ] Write a test to make sure this endpoint always returns an array, even if there are no games stored. If there are no games to return, the endpoint should return an empty array.
+- [x] The `GET /games` endpoint should return the list of games and HTTP status code 200.
+- [x] Write a test to make sure this endpoint always returns an array, even if there are no games stored. If there are no games to return, the endpoint should return an empty array.
 
 ## Stretch Problems
 

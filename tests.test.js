@@ -9,7 +9,7 @@ const data = {
 
 const partial = {
   title: "Mass Effect", 
-  // genre: null,
+  // genre: "Shooter",
   releaseYear: 2007
 };
 
