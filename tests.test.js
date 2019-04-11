@@ -1,16 +1,16 @@
 const req = require("supertest");
 const s = require("./api/server");
 
-const allGameData = {
-  title: "Mass Effect", // required
-  genre: "Shooter", // required
-  releaseYear: 2007 // not required
+const data = {
+  title: "Mass Effect",
+  genre: "Shooter",
+  releaseYear: 2007
 };
 
-const partialGameData = {
-  title: "Mass Effect", // required
-  // genre: null, // required but left out for the test
-  releaseYear: 2007 // not required
+const partial = {
+  title: "Mass Effect", 
+  // genre: null,
+  releaseYear: 2007
 };
 
 describe("Games", () => {
@@ -18,20 +18,20 @@ describe("Games", () => {
     it("should return status 201", async () => {
       let res = await req(s)
         .post("/games")
-        .send(allGameData);
+        .send(data);
       expect(res.status).toBe(201);
     });
 
     it("returns successfully", async () => {
       let res = await req(s)
         .post("/games")
-        .send(allGameData);
+        .send(data);
       expect(res.body).toEqual({ message: "Mass Effect successfully added" });
     });
     it("returns 422 if information is incomplete", async () => {
       let res = await req(s)
         .post("/games")
-        .send(partialGameData);
+        .send(partial);
       expect(res.status).toBe(422);
     });
   });
