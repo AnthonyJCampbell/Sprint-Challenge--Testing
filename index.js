@@ -1,5 +1,5 @@
-const server = require('./api/server.js');
+const server = require("./API/server");
 
-const port = PROCESS.ENV.PORT || 6666
+const port = 6666;
 
-server.listen(port, () => console.log(`\nserver up on port ${port}\n`)); 
+server.listen(port, () => console.log(`\n *** server live on port ${port} *** \n`));
